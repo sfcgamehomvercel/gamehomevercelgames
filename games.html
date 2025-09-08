@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- THE WHIRLPOOL INCIDENT - Version 2.0 -->
+    <!-- NEVER FORGET THE CSS THAT SWALLOWED OUR BUTTONS -->
+    <!--from nny-->
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SchoolFlashCards3 - Unblocked Games</title>
+    <link rel="shortcut icon" href="logo.png" />
+    <style>
+        html { scroll-behavior: smooth; }
+
+:root {
+            --primary: #4ECDC4;
+            --secondary: #4ECDC4;
+            --accent: #FFE66D;
+            --dark: #292F36;
+            --light: #F7FFF7;
+            --button: #FF6B6B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+        }
+
+		.logo {
+    position: relative;
+    display: inline-block;
+}
+
+.logo .hover-text {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: var(--accent);
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+
+.logo:hover .hover-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+        header {
+            background-color: var(--primary);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.header-left {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-right {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+/* Make elements shrink on smaller screens */
+.header-content > * {
+    flex: 1 1 auto;
+    min-width: 150px;
+}
+
+.header-search {
+    flex: 1 1 200px;
+    max-width: 300px;
+}
+
+/* Stack neatly on mobile */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .header-right {
+        justify-content: center;
+        margin-left: 0;
+    }
+}
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            margin-right: auto;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .random-game-btn,
+        .suggestions-btn {
+            background-color: var(--dark);
+            color: var(--accent);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            text-decoration: none;
+            user-select: none;
+        }
+
+        .random-game-btn:hover,
+        .suggestions-btn:hover {
+            background-color: #454545;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+            margin: 0 15px;
+        }
+
+        nav ul li {
+            margin-left: 0;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+            font-size: 14px;
+            padding: 5px 0;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        .header-search {
+            width: 250px;
+            position: relative;
+            min-width: 200px;
+        }
+
+        .header-search input {
+            width: 100%;
+            padding: 8px 15px;
+            border-radius: 30px;
+            border: none;
+            font-size: 14px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-search button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background-color: var(--button);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero {
+            background-color: var(--secondary);
+            padding: 40px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 25px;
+        }
+
+        .search-bar {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: none;
+            font-size: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-bar button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background-color: var(--button);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+        }
+
+        .games-section {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--dark);
+            font-size: 32px;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .game-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .game-image {
+            height: 150px;
+            background-color: var(--secondary);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .game-info {
+            padding: 15px;
+        }
+
+        .game-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .game-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .play-btn {
+            display: inline-block;
+            background-color: var(--button);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .play-btn:hover {
+            background-color: #454545;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .category-btn {
+            background-color: white;
+            border: 2px solid var(--secondary);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        @media (max-width: 1024px) {
+            .header-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.header-left {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-right {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+/* Make elements shrink on smaller screens */
+.header-content > * {
+    flex: 1 1 auto;
+    min-width: 150px;
+}
+
+.header-search {
+    flex: 1 1 200px;
+    max-width: 300px;
+}
+
+/* Stack neatly on mobile */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .header-right {
+        justify-content: center;
+        margin-left: 0;
+    }
+}
+
+            nav ul {
+                gap: 10px;
+            }
+
+            nav ul li a {
+                font-size: 13px;
+            }
+
+            .header-search {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.header-left {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-right {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+/* Make elements shrink on smaller screens */
+.header-content > * {
+    flex: 1 1 auto;
+    min-width: 150px;
+}
+
+.header-search {
+    flex: 1 1 200px;
+    max-width: 300px;
+}
+
+/* Stack neatly on mobile */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .header-right {
+        justify-content: center;
+        margin-left: 0;
+    }
+}
+
+            .logo {
+                margin-right: 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                white-space: normal;
+            }
+
+            .header-search {
+                width: 100%;
+            }
+
+            .games-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <div class="container">
+        <div class="header-content">
+    <div class="header-left">
+        <a href="https://schoolflashcards3.github.io/gamehome/" class="logo">
+            School<span>Flash</span>Cards
+            <span class="hover-text">Nny was here</span>
+        </a>
+        <button class="random-game-btn" id="randomGameBtn">🎲 Random Game</button>
+        <a href="https://schoolflashcards3.github.io/suggestions/" class="suggestions-btn">💡 Suggestions</a>
+    </div>
+    <div class="header-right">
+        <nav>
+            <ul>
+                <li><a href="https://discord.gg/GnVUkcsfMw">Discord</a></li>
+                <li><a href="https://www.youtube.com/@SFC3GH">YouTube</a></li>
+                <li><a href="https://www.tiktok.com/@schoolflashcards3_gh">TikTok</a></li>
+                <li><a href="https://schoolflashcards3.github.io/gamehome/wr.html">WR</a></li>
+                <li><a href="#games">All Games</a></li>
+            </ul>
+        </nav>
+        <div class="header-search">
+            <input type="text" placeholder="Search games..." />
+            <button>🔍</button>
+        </div>
+    </div>
+</div>
+</div>
+</header>
+
+
+    <section class="hero">
+      <div class="container">
+        <h3 style="font-family: Comic Sans MS; color:red">
+          🔔 New game; <a href="#Gladihoppers-newgame" style="color:blue; text-decoration:none;" onmousedown="this.style.color='blue'" onmouseup="this.style.color='blue'">Gladihoppers!</a>🔔
+        </h3>
+
+    <!--Notification copy emojis: 🔔 (notification) 🔕No updates happening soon or have happened recently!🔕(no noitfication)-->
+    
+  </div>
+</section>
+
+
+
+    
+    <section id="games" class="games-section">
+        <div class="container">
+            <h1 class="section-title">Games</h1>
+            
+            <div class="games-grid">
+                <!-- Game 1 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://th.bing.com/th/id/OIP.nPuB55Mp95w18r3p7rSOjgHaD4?rs=1&pid=ImgDetMain');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Tiny Fishing!</h3>
+                        <a href="https://ekfun.github.io/tiny-fishing/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- Game 2 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://wallpaperaccess.com/full/5720727.jpg');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Slither.IO!</h3>
+                        <a href="https://ekfun.github.io/slither-io/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- Game 3 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://th.bing.com/th/id/R.99388c093ab0db9347d6ecfd99370474?rik=2ISiCYnsT4GNOA&pid=ImgRaw&r=0');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Fruit Ninja!</h3>
+                        <a href="https://ekfun.github.io/fruit-ninja/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- Game 4 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://th.bing.com/th/id/OIP.sNzuFjc75su2lU5Pb5ZJvgHaEK?rs=1&pid=ImgDetMain');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Cookie Clicker!</h3>
+                        <a href="https://schoolflashcards3.github.io/cookieNEW/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- Game 5 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://geometrydash.io/data/image/game/csgoclicker.PNG');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">CSGO Clicker!</h3>
+                        <a href="https://schoolflashcards3.github.io/CSGOClicker/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- Game 6 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://www.coolmathgames.com/sites/default/files/styles/mobile_game_image/public/MotoX3M_OG-logo.jpg?itok=7SjKNQvy');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Moto X3M!</h3>
+                        <a href="https://schoolflashcards3.github.io/motox3m/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- Game 7 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://img.itch.zone/aW1nLzc1MzUxOTUucG5n/original/zQmEXl.png');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Bitcoin Clicker!</h3>
+                        <a href="https://schoolflashcards3.github.io/bitCoin_clicker/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- Game 8 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://data2.1freewallpapers.com/download/flappy-bird-game-popular-1366x768.jpg');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Flappy Bird!</h3>
+                        <a href="https://ekfun.github.io/flappy-bird/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- Game 9 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://th.bing.com/th/id/OIP.FtKs5H6IkONNnA5qoyQNqwHaEK?rs=1&pid=ImgDetMain');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Slope 3!</h3>
+                        <a href="https://ekfun.github.io/slope3/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- Game 10 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://th.bing.com/th/id/OIP.NTFKPJqkEjic45gnivPLvQHaEK?rs=1&pid=ImgDetMain');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Aquapark.IO!</h3>
+                        <a href="https://ekfun.github.io/aquapark-io/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- Game 11 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://th.bing.com/th/id/OIP.IEM9u5vSsjldpC8xTDMo_wHaDt?rs=1&pid=ImgDetMain');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Stickman Hook!</h3>
+                        <a href="https://ekfun.github.io/stickman-hook/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- Game 12 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://retrobowlcollege.io/data/image/screenshot-2023-11-23-105503.png');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Axis Football League!</h3>
+                        <a href="https://ekfun.github.io/axis-football-league/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- Game 13 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://th.bing.com/th/id/OIP.b5-KggaPRTioUNh2mk2mEgHaEK?rs=1&pid=ImgDetMain');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Subway Surfers!</h3>
+                        <a href="https://jaysoninthesubway.github.io/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- Game 14 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://wallpaper.dog/large/815735.jpg');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Minecraft!</h3>
+                        <a href="https://ekfun.github.io/eagtek/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- Game 15 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://th.bing.com/th/id/OIP.ZXvaWHcoqFPZcGo78fK9SQHaDk?rs=1&pid=ImgDetMain');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Crossy Road!</h3>
+                        <a href="https://ekfun.github.io/crossy-road/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- Game 16 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://th.bing.com/th/id/OIP.ollyg9Yd7zX9DNtnkzsc-gHaEJ?rs=1&pid=ImgDetMain');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Basketball Legends!</h3>
+                        <a href="https://ekfun.github.io/basketball-legends/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+
+                <!-- Game 17 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://th.bing.com/th/id/OIP.raV370_mlwudwsGzK28T0wHaEB?rs=1&pid=ImgDetMain');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Cut the Rope!</h3>
+                        <a href="https://ekfun.github.io/cut-the-rope/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+
+                 <!-- Game 18 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://www.metacritic.com/a/img/catalog/provider/6/12/6-1-635169-52.jpg');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Touchdowners!</h3>
+                        <a href="https://ekfun.github.io/touchdowners/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+
+                    <!-- Game 19 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://web-saystore-backend.sgdn.io/snwrdrw/game_preview_en__qzu7wcp7YDhr');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Snow Rider 3D!</h3>
+                        <a href="https://ekfun.github.io/snow-rider-3d/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- Game 20 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://thegadgetlite.com/wp-content/uploads/2023/02/retro-bowl-1024x512.jpg');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Retro Bowl!</h3>
+                        <a href="https://ekfun.github.io/retro-bowl-unblocked/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+
+                <!-- Game 21-->                
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsjzNG5lORTCkfqc_yn7CEhCQP5aRZP9_OOA&s');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Truck Loader 4!</h3>
+                        <a href="https://ekfun.github.io/truck-loader-4/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+
+                 <!-- Game 22-->                
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/7d/a4/6a/7da46af9-4953-70c6-6f3c-25444de561c9/pr_source.png/643x0w.jpg');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">GunSpin!</h3>
+                        <a href="https://ekfun.github.io/gunspin/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+
+                <!-- Game 23-->                
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://www.coolmathgames.com/sites/default/files/CandyJump_OG-logo.jpg');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Candy Jump!</h3>
+                        <a href="https://ekfun.github.io/candy-jump/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+
+                <!-- Game 24-->                
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2673990/header.jpg?t=1723312296');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Animal Arena!</h3>
+                        <a href="https://ekfun.github.io/animal-arena/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <section id="Gladihoppers-newgame">
+                <!-- Game 24-->                
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://img.itch.zone/aW1nLzI1Mzk3MTIucG5n/original/cLEoOV.png');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Gladihoppers!</h3>
+                        <a href="https://ekfun.github.io/gladihoppers/" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZWLPSJ45RJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZWLPSJ45RJ');
+</script>
+    
+<footer>
+    <div class="container">
+        <div style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;">
+            <p class="copyright">© 2025 SchoolFlashCards3. Jaysoninthesubway and EKFun are affiliates of SchoolFlashCards3.™</p>
+            <button id="cycleBrandBtn" style="background: var(--button); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-family: inherit;">
+                Enable Disguise Mode
+            </button>
+			<p><a href="https://schoolflashcards3.github.io/admin-panel/">ADMIN LOGIN</a></p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Branding options - add your own favicon filenames
+    const brandOptions = [
+        {
+            title: "New Tab",
+            favicon: "chromelogo.png" // Default favicon
+        },
+        {
+            title: "SchoolFlashCards3 - Unblocked Games", 
+            favicon: "logo.png" // Alternate favicon 1
+        }
+    ];
+    let currentBrandIndex = 0;
+
+    function cycleBranding() {
+        // Move to next option (loop back to 0 if at end)
+        currentBrandIndex = (currentBrandIndex + 1) % brandOptions.length;
+        
+        const brand = brandOptions[currentBrandIndex];
+        
+        // Update title
+        document.title = brand.title;
+        
+        // Update favicon
+        let favicon = document.querySelector("link[rel='icon']");
+        if (!favicon) {
+            favicon = document.createElement('link');
+            favicon.rel = 'icon';
+            document.head.appendChild(favicon);
+        }
+        favicon.href = brand.favicon;
+    }
+
+    // Initialize with first brand
+    document.addEventListener('DOMContentLoaded', function() {
+        cycleBranding(); // Set initial brand
+        document.getElementById('cycleBrandBtn').addEventListener('click', cycleBranding);
+    });
+</script>
+    
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const gameCards = document.querySelectorAll('.game-card');
+        const searchInputs = document.querySelectorAll('.search-bar input, .header-search input');
+        const searchButtons = document.querySelectorAll('.search-bar button, .header-search button');
+        const gamesGrid = document.querySelector('.games-grid');
+        
+        // Create no results message element
+        const noResultsMsg = document.createElement('div');
+        noResultsMsg.className = 'no-results';
+        noResultsMsg.textContent = 'No games found matching your search.';
+        noResultsMsg.style.display = 'none';
+        noResultsMsg.style.gridColumn = '1 / -1';
+        noResultsMsg.style.textAlign = 'center';
+        noResultsMsg.style.fontSize = '1.2em';
+        noResultsMsg.style.margin = '20px 0';
+        gamesGrid.appendChild(noResultsMsg);
+
+        function performSearch(query) {
+            query = query.trim().toLowerCase();
+            let hasResults = false;
+            
+            gameCards.forEach(card => {
+                const title = card.querySelector('.game-title').textContent.toLowerCase();
+                if (query === '' || title.includes(query)) {
+                    card.style.display = 'block';
+                    hasResults = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            if (!hasResults && query !== '') {
+                noResultsMsg.style.display = 'block';
+            } else {
+                noResultsMsg.style.display = 'none';
+            }
+        }
+        
+        searchButtons.forEach((button, index) => {
+            button.addEventListener('click', function() {
+                performSearch(searchInputs[index].value);
+            });
+        });
+        
+        searchInputs.forEach(input => {
+            input.addEventListener('keyup', function(e) {
+                performSearch(this.value);
+            });
+        });
+        
+        searchButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const input = this.parentElement.querySelector('input');
+                if (input.value.trim() === '') {
+                    performSearch('');
+                }
+            });
+        });
+
+        // Random Game Functionality - includes ALL games
+        const randomGameBtn = document.getElementById('randomGameBtn');
+        if (randomGameBtn) {
+            randomGameBtn.addEventListener('click', function() {
+                const gameLinks = Array.from(document.querySelectorAll('.play-btn'))
+                    .map(btn => btn.href);
+                
+                if (gameLinks.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * gameLinks.length);
+                    const randomGameUrl = gameLinks[randomIndex];
+                    window.open(randomGameUrl, '_blank');
+                } else {
+                    alert('No games available!');
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>
